@@ -1,21 +1,24 @@
-# 文档索引
+# Docs Index
 
-## 当前文档
+This folder keeps project design notes, delivery notes, and conversation archives.
 
-- [程序员狼人杀策划文档](D:\codex\个人赛\docs\programmer-werewolf-design.md)
-  - 主策划文档
-  - 持续归档世界观、规则、角色、故障、流程和前端规格
+## Recommended Reading Order
 
-## 归档规则
+1. [Repository Overview](../README.md)
+2. [Main Conversation Archive](./main-conversation-archive.md)
+3. [Original Design Notes](./programmer-werewolf-design.md)
 
-- 新增设计内容优先补充到主策划文档
-- 若某个主题超过单独实现所需深度，再拆分独立文档
-- 不删除已有结论，采用追加和版本日志方式维护
+## Current Documents
 
-## 后续建议拆分主题
+- `main-conversation-archive.md`
+  Main implementation and delivery conversation summary for the singleplayer version.
 
-- 角色平衡表
-- 任务小游戏设计
-- 地图交互规格
-- UI 线框图
-- 前端状态机与接口协议
+- `programmer-werewolf-design.md`
+  Earlier project planning and worldbuilding notes. This file is preserved as historical design context.
+
+## Archive Rules
+
+- Keep implementation history in additive form
+- Do not overwrite key conclusions silently
+- Prefer creating new archive notes when a new major milestone is reached
+

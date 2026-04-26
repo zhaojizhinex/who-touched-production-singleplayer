@@ -30,6 +30,12 @@ This repo currently contains a playable singleplayer version with:
 - `app/`: main playable project
 - `docs/`: design notes and planning docs
 
+Docs entry points:
+
+- `docs/README.md`: docs index
+- `docs/main-conversation-archive.md`: major implementation and delivery archive
+- `docs/programmer-werewolf-design.md`: historical design notes
+
 Important app files:
 
 - `app/src/App.tsx`: main UI and flow
@@ -78,4 +84,4 @@ Generated outputs are ignored from git on purpose:
 - This repository tracks source files, not build artifacts
 - The desktop package can be regenerated locally from source
 - The docs folder keeps the design context for the project
-
+- Main implementation history is summarized in `docs/main-conversation-archive.md`
