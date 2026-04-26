@@ -1,0 +1,18 @@
+# Root ignores
+.DS_Store
+.idea/
+.vscode/
+
+# App dependencies and caches
+app/node_modules/
+app/.npm-cache/
+
+# App build outputs
+app/dist/
+app/release/
+app/*.tsbuildinfo
+
+# Logs
+app/logs/
+app/*.log
+
