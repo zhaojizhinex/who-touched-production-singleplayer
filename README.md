@@ -28,11 +28,14 @@ This repo currently contains a playable singleplayer version with:
 ## Project Structure
 
 - `app/`: main playable project
-- `docs/`: design notes and planning docs
+- `docs/`: project docs, archives, and design materials
 
 Docs entry points:
 
 - `docs/README.md`: docs index
+- `docs/project-design-document.md`: current project design document
+- `docs/project-raw-data-document.md`: current raw data and rule data document
+- `docs/agent-conversation-log.md`: reconstructed agent collaboration record
 - `docs/main-conversation-archive.md`: major implementation and delivery archive
 - `docs/programmer-werewolf-design.md`: historical design notes
 
@@ -85,3 +88,4 @@ Generated outputs are ignored from git on purpose:
 - The desktop package can be regenerated locally from source
 - The docs folder keeps the design context for the project
 - Main implementation history is summarized in `docs/main-conversation-archive.md`
+- The Chinese project documentation set now includes design, raw data, and agent conversation records in `docs/`
