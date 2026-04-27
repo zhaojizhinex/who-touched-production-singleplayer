@@ -12,7 +12,8 @@ import {
   resolveRound,
   submitVote,
 } from "./game";
-import { ActionType, PendingAction } from "./types";
+import { ActionType, PendingAction, RoleId } from "./types";
+import { ROLE_ART, ROLE_BADGE, ROLE_THEME, officeMapArt, officeMapShowcaseArt } from "./art";
 
 const ACTION_OPTIONS: Array<{ type: ActionType; label: string; description: string }> = [
   { type: "task", label: "做事", description: "老老实实推进项目进度。" },
@@ -23,6 +24,7 @@ const ACTION_OPTIONS: Array<{ type: ActionType; label: string; description: stri
 ];
 
 const PLAYER_ACCENTS = ["player-accent-1", "player-accent-2", "player-accent-3", "player-accent-4", "player-accent-5"] as const;
+const SHOWCASE_ROLES: RoleId[] = ["frontend", "backend", "qa", "pm", "intern"];
 
 function App() {
   const [started, setStarted] = useState(false);
@@ -169,6 +171,32 @@ function App() {
                 <li>越高风险，成功率越低，但成功分越高。</li>
               </ul>
             </div>
+            <section className="showcase-panel">
+              <div className="showcase-copy">
+                <div className="panel-header">
+                  <h2>Showcase</h2>
+                  <span>Map + Roles</span>
+                </div>
+                <div className="showcase-map-card">
+                  <img className="showcase-map-image" src={officeMapShowcaseArt} alt="showcase office map" />
+                </div>
+              </div>
+              <div className="showcase-role-grid">
+                {SHOWCASE_ROLES.map((roleId) => {
+                  const role = getRole(roleId);
+                  return (
+                    <article key={roleId} className={`showcase-role-card ${ROLE_THEME[roleId]}`}>
+                      <span className="role-badge showcase-role-badge">{ROLE_BADGE[roleId]}</span>
+                      <img className="showcase-role-art" src={ROLE_ART[roleId]} alt={role.name} />
+                      <div className="showcase-role-copy">
+                        <strong>{role.name}</strong>
+                        <span>{role.label}</span>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
             <button className="primary-button" onClick={() => { setStarted(true); setShowGuide(true); }} type="button">
               开始这一局
             </button>
@@ -192,7 +220,9 @@ function App() {
               </div>
               <div className="sound-bar">{soundHint}</div>
             </div>
-            <div className={`hero-card ${me.faction}`}>
+            <div className={`hero-card ${me.faction} ${ROLE_THEME[me.roleId]}`}>
+              <img className="hero-role-art" src={ROLE_ART[me.roleId]} alt={meRole.name} />
+              <span className="role-badge hero-role-badge">{ROLE_BADGE[me.roleId]}</span>
               <p>你的职业</p>
               <strong>{meRole.name}</strong>
               <span>{meRole.label}</span>
@@ -388,6 +418,7 @@ function App() {
             <section className="panel center-stage">
               <div className="panel-header"><h2>地图</h2><span>5 个房间</span></div>
               <div className="station-map">
+                <img className="station-map-image" src={officeMapArt} alt="office map" />
                 {roomHeat.map(({ room, playersHere, incidentsHere }) => {
                   const point = ROOM_LAYOUT.find((item) => item.id === room.id)!;
                   return (
@@ -443,9 +474,18 @@ function App() {
                   const playerRole = getRole(player.roleId);
                   const accentClass = playerAccentMap.get(player.id) ?? PLAYER_ACCENTS[0];
                   return (
-                    <article key={player.id} className={`${player.alive ? "player-card" : "player-card eliminated"} ${accentClass}`}>
+                    <article key={player.id} className={`${player.alive ? "player-card" : "player-card eliminated"} ${accentClass} ${ROLE_THEME[player.roleId]}`}>
+                      <div className="player-portrait-shell">
+                        <img className="player-portrait" src={ROLE_ART[player.roleId]} alt={playerRole.name} />
+                      </div>
                       <div className="player-topline">
-                        <div><h3>{player.name}</h3><p>{playerRole.name}</p></div>
+                        <div>
+                          <div className="player-title-row">
+                            <h3>{player.name}</h3>
+                            <span className="role-badge player-role-badge">{ROLE_BADGE[player.roleId]}</span>
+                          </div>
+                          <p>{playerRole.name}</p>
+                        </div>
                         <span className={player.alive ? "alive-chip" : "out-chip"}>{player.alive ? "还在场" : "出局了"}</span>
                       </div>
                       <p className="meta">位置：{getRoom(player.location).name}{player.isHuman ? " / 你" : " / AI"}</p>

@@ -31,11 +31,11 @@ const CREW_ACTION_NODES = 1;
 const IMPOSTOR_ACTION_NODES = 2;
 
 export const ROOM_LAYOUT: Array<{ id: RoomId; x: number; y: number }> = [
-  { id: "workspace", x: 18, y: 22 },
-  { id: "meeting", x: 52, y: 18 },
-  { id: "qa_lab", x: 80, y: 28 },
-  { id: "release", x: 32, y: 68 },
-  { id: "breakroom", x: 72, y: 74 },
+  { id: "workspace", x: 19, y: 25 },
+  { id: "meeting", x: 50, y: 23 },
+  { id: "qa_lab", x: 81, y: 24 },
+  { id: "release", x: 24, y: 73 },
+  { id: "breakroom", x: 75, y: 73 },
 ];
 
 export const ROLES: Record<RoleId, RoleDef> = {
